@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Roll</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>DICE ROLL</h1>
+    <div class="dice" id="dice"><img src="1.png"/></div>
+    <button id="roll_button">Roll The Dice</button>
+    <audio id="roll_sound" src="./sound/kick-bass.mp3"></audio>
+
+    <script>
+        let button1 = document.getElementById("roll_button");
+        let dice1 = document.getElementById("dice");
+        let rollSound = document.getElementById("roll_sound");
+
+        function rollDice() {
+            rollSound.play();  // Corrected this line
+            let rollRes = Math.floor(Math.random() * 6) + 1;
+            console.log(rollRes);
+            let diceFace = getDice(rollRes);
+            dice1.innerHTML = diceFace;
+        }
+
+        function getDice(rollRes) {
+            switch (rollRes) {
+                case 1:
+                    return '<img src="1.png"/>';
+                case 2:
+                    return '<img src="2.png"/>';
+                case 3:
+                    return '<img src="3.png"/>';
+                case 4:
+                    return '<img src="4.png"/>';
+                case 5:
+                    return '<img src="5.png"/>';
+                case 6:
+                    return '<img src="6.png"/>';
+                default:
+                    return "";
+            }
+        }
+
+        button1.addEventListener("click", rollDice);
+    </script>
+</body>
+</html>
